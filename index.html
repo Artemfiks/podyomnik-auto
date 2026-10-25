@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Подъёмник — автосервис и шиномонтаж</title>
+<meta name="description" content="Автосервис: цены на ремонт и шиномонтаж для вашего класса машины, запись на время онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --steel: #1E4E79; --steel-2: #173E61; --sky: #EAF1F7; --white: #FAFCFE; --orange: #F26B1D; --graphite: #2B2F36; --muted: #5E6874; --line: #D3DEE8; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font-family: "Golos Text", system-ui, sans-serif; color: var(--graphite); background: var(--white); line-height: 1.55; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: "Unbounded", sans-serif; line-height: 1.12; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 14px; }
+.lead { color: var(--muted); max-width: 62ch; margin: 0 0 28px; }
+header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.nav { display: flex; align-items: center; gap: 24px; height: 66px; }
+.logo { font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 20px; text-decoration: none; color: var(--steel); display: flex; align-items: center; gap: 10px; }
+.nav nav { display: flex; gap: 22px; margin-left: auto; }
+.nav nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.nav nav a:hover { color: var(--steel); }
+.call { background: var(--orange); color: #fff; text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 10px; }
+@media (max-width: 860px) { .nav nav { display: none; } .call { margin-left: auto; } }
+.hero { background: var(--steel); color: #fff; padding: 56px 0 0; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; }
+.hero h1 { font-size: clamp(32px, 5.2vw, 58px); font-weight: 800; }
+.hero p { color: #C9DAEA; font-size: 18px; max-width: 44ch; margin: 18px 0 26px; }
+.btn { display: inline-block; padding: 14px 22px; border-radius: 12px; font: inherit; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; }
+.btn-main { background: var(--orange); color: #fff; }
+.btn-line { border: 2px solid rgba(255,255,255,.45); color: #fff; }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 56px; }
+/* Иллюстрация: машина на подъёмнике */
+.lift { position: relative; height: 330px; }
+.lift svg { position: absolute; inset: auto 0 0 0; width: 100%; height: 100%; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .lift { height: 220px; } .btns { padding-bottom: 8px; } }
+section { padding: 72px 0; }
+/* Цены с переключателем класса машины */
+.switch { display: inline-flex; background: var(--sky); border-radius: 14px; padding: 5px; margin-bottom: 26px; flex-wrap: wrap; }
+.switch button { font: inherit; font-weight: 700; border: 0; background: transparent; color: var(--muted); padding: 10px 18px; border-radius: 10px; cursor: pointer; }
+.switch button[aria-pressed="true"] { background: #fff; color: var(--steel); box-shadow: 0 1px 3px rgba(30,78,121,.2); }
+.prices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 44px; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.row b { font-weight: 700; }
+.row .p { font-family: "Unbounded", sans-serif; font-weight: 600; color: var(--steel); white-space: nowrap; }
+.row small { color: var(--muted); grid-column: 1 / -1; }
+@media (max-width: 760px) { .prices { grid-template-columns: 1fr; } }
+.steps { background: var(--sky); }
+.steps ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: s; }
+.steps li { background: #fff; border-radius: 16px; padding: 22px; counter-increment: s; }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--steel); color: #fff; font-family: "Unbounded", sans-serif; font-weight: 600; margin-bottom: 12px; }
+.steps h3 { font-size: 17px; margin-bottom: 6px; }
+.steps p { margin: 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 860px) { .steps ol { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .steps ol { grid-template-columns: 1fr; } }
+.guarantee { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.guarantee div { border-top: 4px solid var(--orange); padding-top: 14px; }
+.guarantee strong { font-family: "Unbounded", sans-serif; font-size: 28px; color: var(--steel); display: block; }
+.guarantee span { color: var(--muted); }
+@media (max-width: 760px) { .guarantee { grid-template-columns: 1fr; } }
+.book { background: var(--graphite); color: #fff; border-radius: 22px; padding: 40px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 36px; }
+.book p { color: #C3CBD4; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 6px; font-size: 14px; color: #C3CBD4; }
+input, select { font: inherit; padding: 13px 14px; border-radius: 10px; border: 0; background: #fff; color: var(--graphite); }
+.full { grid-column: 1 / -1; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.slots button { font: inherit; border: 1px solid #56606C; background: transparent; color: #fff; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.slots button[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); }
+.ok { display: none; background: var(--orange); padding: 14px; border-radius: 10px; font-weight: 700; }
+.note { font-size: 13px; color: #98A2AE; margin: 0; }
+@media (max-width: 860px) { .book { grid-template-columns: 1fr; padding: 26px; } form { grid-template-columns: 1fr; } }
+.contacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.contacts div { background: var(--sky); border-radius: 16px; padding: 22px; }
+.contacts span { color: var(--muted); font-size: 14px; display: block; }
+.contacts b { font-size: 18px; }
+@media (max-width: 760px) { .contacts { grid-template-columns: 1fr; } }
+footer { border-top: 1px solid var(--line); padding: 28px 0; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="logo" href="#top"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="20" width="24" height="4" rx="1" fill="#F26B1D"/><rect x="6" y="6" width="3" height="14" fill="#1E4E79"/><rect x="21" y="6" width="3" height="14" fill="#1E4E79"/><rect x="5" y="10" width="20" height="3" rx="1" fill="#1E4E79"/></svg>Подъёмник</a>
+<nav aria-label="Разделы"><a href="#prices">Цены</a><a href="#how">Как работаем</a><a href="#book">Запись</a><a href="#contacts">Контакты</a></nav>
+<a class="call" href="tel:+70000000000">Позвонить</a>
+</div>
+</header>
+<main id="top">
+<section class="hero" style="padding-bottom:0">
+<div class="wrap hero-grid">
+<div>
+<h1>Ремонт и шиномонтаж без очереди</h1>
+<p>Цена известна до начала работ. Покажем старые детали и запишем всё в заказ-наряд.</p>
+<div class="btns">
+<a class="btn btn-main" href="#book">Записаться на время</a>
+<a class="btn btn-line" href="#prices">Узнать цену</a>
+</div>
+</div>
+<div class="lift" role="img" aria-label="Машина на подъёмнике">
+<svg viewBox="0 0 480 330" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+<rect x="0" y="300" width="480" height="30" fill="#173E61"/>
+<rect x="60" y="120" width="14" height="180" fill="#C9DAEA"/><rect x="406" y="120" width="14" height="180" fill="#C9DAEA"/>
+<rect x="74" y="196" width="332" height="12" rx="3" fill="#F26B1D"/>
+<path d="M100 196 L120 150 Q140 112 196 108 L300 108 Q346 110 370 150 L392 172 L392 196 Z" fill="#FAFCFE"/>
+<path d="M150 150 L170 122 L226 120 L226 150 Z M240 120 L296 120 Q322 124 336 150 L240 150 Z" fill="#9DB9D3"/>
+<circle cx="160" cy="200" r="28" fill="#2B2F36"/><circle cx="160" cy="200" r="11" fill="#C9DAEA"/>
+<circle cx="336" cy="200" r="28" fill="#2B2F36"/><circle cx="336" cy="200" r="11" fill="#C9DAEA"/>
+<rect x="364" y="160" width="20" height="8" rx="3" fill="#F26B1D"/>
+</svg>
+</div>
+</div>
+</section>
+<section id="prices">
+<div class="wrap">
+<h2>Цены</h2>
+<p class="lead">Выберите класс машины — цены пересчитаются. Это пример: на вашем сайте будет ваш прайс.</p>
+<div class="switch" role="group" aria-label="Класс машины">
+<button type="button" aria-pressed="true" data-k="1">Легковая</button>
+<button type="button" aria-pressed="false" data-k="1.2">Кроссовер</button>
+<button type="button" aria-pressed="false" data-k="1.4">Внедорожник / минивэн</button>
+</div>
+<div class="prices" id="priceList"></div>
+</div>
+</section>
+<section class="steps" id="how">
+<div class="wrap">
+<h2>Как проходит ремонт</h2>
+<p class="lead">Ничего не делаем без вашего согласия.</p>
+<ol>
+<li><h3>Запись</h3><p>Выбираете удобное время на сайте или по телефону.</p></li>
+<li><h3>Диагностика</h3><p>Смотрим машину и называем точную цену.</p></li>
+<li><h3>Ремонт</h3><p>Работаем после вашего «да». Фото процесса — в мессенджер.</p></li>
+<li><h3>Выдача</h3><p>Отдаём старые детали, заказ-наряд и гарантию.</p></li>
+</ol>
+</div>
+</section>
+<section>
+<div class="wrap guarantee">
+<div><strong>6 месяцев</strong><span>гарантия на работы</span></div>
+<div><strong>30 минут</strong><span>сезонная переобувка на четырёх колёсах</span></div>
+<div><strong>0 ₽</strong><span>диагностика, если ремонт у нас</span></div>
+</div>
+</section>
+<section id="book">
+<div class="wrap">
+<div class="book">
+<div>
+<h2>Записаться на время</h2>
+<p>Выберите день и свободное окно — подтвердим запись сообщением.</p>
+</div>
+<form id="bookForm">
+<label>Имя<input required autocomplete="name"></label>
+<label>Телефон<input type="tel" required autocomplete="tel" placeholder="+7"></label>
+<label>Работа<select id="workSel"></select></label>
+<label>День<input type="date" required id="day"></label>
+<div class="full"><label style="margin-bottom:8px">Свободное время</label><div class="slots" id="slots"></div></div>
+<button class="btn btn-main full" type="submit">Записаться</button>
+<div class="ok full" id="ok" role="status">Это пример сайта: на вашем сайте запись сразу придёт вам в Telegram.</div>
+<p class="note full">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+</form>
+</div>
+</div>
+</section>
+<section id="contacts" style="padding-top:0">
+<div class="wrap">
+<h2>Контакты</h2>
+<div class="contacts">
+<div><span>Адрес</span><b>ул. Примерная, 1, бокс 4</b></div>
+<div><span>Телефон</span><b><a href="tel:+70000000000">+7 (000) 000-00-00</a></b></div>
+<div><span>Часы работы</span><b>Пн–Сб 9:00 — 20:00</b></div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>«Подъёмник» — пример сайта для автосервиса. Название и адрес вымышленные.</span>
+<span>Хотите такой сайт для своего сервиса? <a href="https://t.me/artem_petoan">Напишите в Telegram</a></span>
+</div>
+</footer>
+<script>
+const WORKS = [
+["Замена масла и фильтра", 800, "Работа, без стоимости масла"], ["Компьютерная диагностика", 1000, "Считываем ошибки, распечатка"],
+["Шиномонтаж 4 колеса", 2400, "Снятие, монтаж, балансировка"], ["Замена тормозных колодок", 1200, "Одна ось"],
+["Развал-схождение", 1800, "На стенде, с распечаткой"], ["Замена ремня ГРМ", 4500, "Цена зависит от модели"],
+["Ремонт ходовой", 1500, "Осмотр бесплатно"], ["Заправка кондиционера", 1700, "С проверкой на утечку"]
+];
+let k = 1;
+const fmt = n => (Math.round(n / 50) * 50).toLocaleString("ru-RU") + " ₽";
+function render() {
+document.getElementById("priceList").innerHTML = WORKS.map(([n, p, d]) =>
+`<div class="row"><b>${n}</b><span class="p">от ${fmt(p * k)}</span><small>${d}</small></div>`).join("");
+}
+document.querySelectorAll(".switch button").forEach(b => b.addEventListener("click", () => {
+k = +b.dataset.k; document.querySelectorAll(".switch button").forEach(x => x.setAttribute("aria-pressed", x === b)); render();
+}));
+render();
+document.getElementById("workSel").innerHTML = WORKS.map(w => `<option>${w[0]}</option>`).join("");
+const slots = document.getElementById("slots");
+["9:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"].forEach((t, i) => {
+const b = document.createElement("button"); b.type = "button"; b.textContent = t; b.setAttribute("aria-pressed", i === 1);
+if (i === 2 || i === 5) { b.disabled = true; b.style.opacity = .35; b.title = "Занято"; }
+b.onclick = () => { slots.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+slots.appendChild(b);
+});
+document.getElementById("day").valueAsDate = new Date(Date.now() + 864e5);
+document.getElementById("bookForm").addEventListener("submit", e => { e.preventDefault(); document.getElementById("ok").style.display = "block"; });
+</script>
+</body>
+</html>
